@@ -6,6 +6,7 @@ const authController = require('../controllers/authController');
 const reviewController = require('../controllers/reviewController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
+// Stores
 router.get('/', catchErrors(storeController.getStores));
 router.get('/stores', catchErrors(storeController.getStores));
 router.get('/stores/page/:page', catchErrors(storeController.getStores));
@@ -29,6 +30,8 @@ router.get('/store/:slug', catchErrors(storeController.getStoreBySlug));
 router.get('/tags', catchErrors(storeController.getStoresByTag));
 router.get('/tags/:tag', catchErrors(storeController.getStoresByTag));
 
+
+// Users, Auth, Accounts, and more - KEEP
 router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
 router.get('/register', userController.registerForm);
@@ -50,6 +53,7 @@ router.post('/account/reset/:token',
 	catchErrors(authController.update)
 );
 
+// Maps, Hearts, Reviews
 router.get('/map', storeController.mapPage);
 router.get('/hearts', authController.isLoggedIn, catchErrors(storeController.getHearts));
 router.post('/reviews/:id', 
@@ -57,10 +61,8 @@ router.post('/reviews/:id',
 	catchErrors(reviewController.addReview)
 );
 router.get('/top', catchErrors(storeController.getTopStores));
-/*
-	API
-*/
 
+// APIs
 router.get('/api/search', catchErrors(storeController.searchStores));
 router.get('/api/stores/near', catchErrors(storeController.mapStores));
 router.post('/api/stores/:id/heart', catchErrors(storeController.heartStore));
