@@ -4,6 +4,7 @@ const storeController = require('../controllers/storeController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const reviewController = require('../controllers/reviewController');
+const entryController = require('../controllers/entryController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 // Stores
@@ -61,6 +62,18 @@ router.post('/reviews/:id',
 	catchErrors(reviewController.addReview)
 );
 router.get('/top', catchErrors(storeController.getTopStores));
+
+// Entries
+router.get('/addEntry', 
+	authController.isLoggedIn,
+	entryController.addEntry);
+
+router.post('/addEntry', 
+	catchErrors(entryController.createEntry)
+);
+router.post('/addEntry/:id', 
+	catchErrors(storeController.updateEntry)
+);
 
 // APIs
 router.get('/api/search', catchErrors(storeController.searchStores));
