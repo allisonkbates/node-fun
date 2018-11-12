@@ -1,16 +1,16 @@
 mixin entryForm(entry = {})
-	form(action=`/addEntry/${entry.id|| ''}` method="POST" class="card" enctype="multipart/form-data")
+	form(action="/addEntry" method="POST" class="card")
 		label(for="name") Name
 		input(type="text" name="name" value=entry.name)
-		//-label(for="dateOfEvent") Date of Event
-		//-input(type="date" name="dateOfEvent" value=entry.dateOfEvent)
-		//-label(for="description") Description
-		//-textarea(name="description")= entry.description
-		//-label(for="Points") Points
-		//-input(type="Number" min=1 max=500 value=entry.points)
-		//- - const actions = ["Download App", "Inbound Leads", "Wing Womaning", "Social Media Connection", "Exchanged Phone Numbers", "Conversations", "Follow Up Outreach", "Parties", "1st Date", "2nd Date", "Additional Dates", "Boyfriend"]
-		//- label(for="Action") Action
-		//- select(name="Action" value=entry.action)
+		label(for="dateOfEvent") Date of Event
+		input(type="date" name="dateOfEvent" value=entry.dateOfEvent)
+		label(for="description") Description
+		textarea(name="description")= entry.description
+		label(for="Points") Points
+		input(type="Number" name="Points" min=1 max=500 value=entry.points)
+		- const actions = ["Download App", "Inbound Leads", "Wing Womaning", "Social Media Connection", "Exchanged Phone Numbers", "Conversations", "Follow Up Outreach", "Parties", "1st Date", "2nd Date", "Additional Dates", "Boyfriend"]
+		label(for="Action") Action
+		select(name="Action" value=entry.action)
 			each action in actions
 				option= action
 		input(type="submit" value="Save " class="button")
