@@ -11,7 +11,7 @@ mixin storeForm(store = {})
 				img(src=`/uploads/${store.photo}`, alt=store.name width=200)
 		//- address - lat & long
 		label(for="address") Address
-		input(ty pe="text" id="address" name="location[address]" value=(store.location && store.location.address))
+		input(type="text" id="address" name="location[address]" value=(store.location && store.location.address))
 		label(for="lng") Address LNG
 		input(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[0]) required)
 		label(for="lat") Address LAT

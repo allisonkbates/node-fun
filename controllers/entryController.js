@@ -7,8 +7,9 @@ exports.addEntry = (req, res) => {
 
 exports.createEntry = async (req, res) => {
 	req.body.author = req.user._id;
+	console.log(req.body);
 	const entry = await (new Entry(req.body)).save();
-	req.flash('success', `Successfully created! Care to leave a review?`);
+	req.flash('success', `Successfully created!`);
 	res.redirect(`/addEntry`);
 }; 
 

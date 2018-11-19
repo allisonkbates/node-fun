@@ -9,7 +9,8 @@ const entrySchema = new mongoose.Schema({
 		required: 'Please enter an entry name!'
 	},
 	dateOfEvent: {
-		type: Date
+		type: Date,
+		required: 'Please enter a date!'
 	},
 	created: {
 		type: Date,
@@ -17,16 +18,19 @@ const entrySchema = new mongoose.Schema({
 	},
 	action: {
 		type: String,
-		trim: true
+		trim: true,
+		required: 'Please enter an action!'
 	},
 	points: {
 		type: Number,
 		min: 1,
-		max: 500
+		max: 500,
+		required: 'Please enter your points!'
 	},
 	description: {
 		type: String,
-		trim: true
+		trim: true, 
+		required: 'Please enter a description!'
 	},
 	slug: String,
 	author: {
