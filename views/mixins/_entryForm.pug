@@ -1,0 +1,23 @@
+mixin entryForm(entry = {})
+	form(action="/addEntry" method="POST" class="card")
+		label(for="name") Give us a catchy title for your entry
+		input(type="text" name="name" value=entry.name)
+		label(for="dateOfEvent") When did this happen?
+		input(type="date" name="dateOfEvent" value=entry.dateOfEvent)
+		- const actions = ["Download App", "Inbound Leads", "Wing Womaning", "Social Media Connection", "Exchanged Phone Numbers", "Conversations", "Follow Up Outreach", "Parties", "1st Date", "2nd Date", "Additional Dates", "Boyfriend"]
+		label(for="action") What tactic did you use?
+		select(name="action" id="action" onChange="newDropdown()" value=entry.action)
+			each action in actions
+				option= action
+		label(for="points") Points calculated
+		select(name="points" id="points" value=entry.points)
+			option= 1
+		label(for="description") Tell us the whole story!
+		textarea(name="description")= entry.description
+		input(type="submit" value="Save " class="button")
+		script.
+			var pointMap =  { "Download App": 1, "Inbound Leads": 2, "Wing Womaning": 2, "Social Media Connection": 2, "Exchanged Phone Numbers": 3, "Conversations": 3, "Follow Up Outreach": 3, "Parties": 5, "1st Date": 5, "2nd Date": 5, "Additional Dates": 5, "Boyfriend": 100};
+			function newDropdown() {
+				var action = document.getElementById('action').value;
+				var final = document.getElementById('points').innerHTML= "<option>" + pointMap[action] + "</option>";
+			};
