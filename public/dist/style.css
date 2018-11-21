@@ -496,11 +496,12 @@ p {
   font-size: 10rem;
   text-align: center; }
 
-input, textarea {
+input, textarea, select {
   width: 100%;
   padding: 10px;
+  outline: none;
   border: 1px solid #e6e6e6; }
-  input.input--error, textarea.input--error {
+  input.input--error, textarea.input--error, select.input--error {
     border-color: red; }
 
 label {
