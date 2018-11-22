@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	.single
+		.single__hero
+			img.single__image(src='store.png')
+			h2.title.title--single
+				a(href=`/entry/${entry.slug}`) #{entry.name}
+	.single__details.inner
+		p= entry.dateOfEvent
+		p= entry.action
+		p= entry.points
+		p= entry.description

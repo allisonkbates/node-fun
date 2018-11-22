@@ -74,6 +74,9 @@ router.post('/addEntry',
 router.post('/addEntry/:id', 
 	catchErrors(storeController.updateEntry)
 );
+router.get('/entries', catchErrors(entryController.getEntries));
+router.get('/entry/:slug', catchErrors(entryController.getEntryBySlug));
+
 
 // APIs
 router.get('/api/search', catchErrors(storeController.searchStores));
